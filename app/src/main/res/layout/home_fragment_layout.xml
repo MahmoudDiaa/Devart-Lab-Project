@@ -28,6 +28,28 @@
             android:textSize="@dimen/_18ssp"
             app:layout_constraintTop_toBottomOf="@id/tv_title" />
 
+        <ImageView
+            android:id="@+id/iv_delivered"
+            android:layout_marginTop="@dimen/_48sdp"
+            app:layout_constraintTop_toBottomOf="@id/tv_address"
+            android:layout_width="@dimen/_86sdp"
+            android:visibility="gone"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:src="@drawable/ic_baseline_check_circle_24"
+            android:layout_height="@dimen/_86sdp" />
+
+        <Button
+            android:id="@+id/bt_deliver"
+            style="@style/submit_button"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/_16sdp"
+            android:padding="@dimen/_10sdp"
+            android:text="@string/deliver"
+            app:layout_constraintBottom_toTopOf="@id/bt_arrived"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
 
         <Button
             android:id="@+id/bt_get_direction"
@@ -37,7 +59,6 @@
 
             android:padding="@dimen/_10sdp"
             android:text="@string/get_direction"
-            android:textSize="@dimen/_12ssp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@id/bt_arrived" />
@@ -49,10 +70,10 @@
             android:layout_margin="@dimen/_16sdp"
             android:padding="@dimen/_10sdp"
             android:text="@string/arrived"
-            android:textSize="@dimen/_12ssp"
-            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintBottom_toBottomOf="@id/bt_get_direction"
             app:layout_constraintEnd_toStartOf="@id/bt_get_direction"
-            app:layout_constraintStart_toStartOf="parent" />
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@id/bt_get_direction" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

@@ -10,6 +10,7 @@ import android.location.Geocoder
 import android.location.Location
 import android.net.Uri
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -18,8 +19,11 @@ import androidx.core.app.ActivityCompat
 import androidx.core.app.NotificationCompat
 import androidx.core.app.NotificationManagerCompat
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
+import com.ekc.devartlabproject.Constants
 import com.ekc.devartlabproject.R
 import com.ekc.devartlabproject.databinding.HomeFragmentLayoutBinding
+
 import com.google.android.gms.location.LocationServices
 import java.util.*
 
@@ -58,10 +62,14 @@ class HomeFragment : Fragment() {
         }
 
     private fun init() {
-
-
+        val sharedPref = activity?.getSharedPreferences(Constants.SharedPrefName,Context.MODE_PRIVATE) ?: return
+        val isDelivered = sharedPref.getBoolean(Constants.IsDelivered, false)
+        Log.e("Home Fragment", "init: $isDelivered", )
         binding.let {
-
+            if(isDelivered)
+                it.ivDelivered.visibility=View.VISIBLE
+            else
+                it.ivDelivered.visibility=View.GONE
             it.tvAddress.text = getAddress(destLatitude, destLongitude)
             it.btGetDirection.setOnClickListener {
                 currentLocation.run {
@@ -85,9 +93,20 @@ class HomeFragment : Fragment() {
             it.btArrived.setOnClickListener {
                 createNotification()
             }
+
+            it.btDeliver.setOnClickListener {
+
+                findNavController().navigate(R.id.action_global_request_frag)
+
+            }
         }
 
 
+    }
+
+    override fun onResume() {
+        super.onResume()
+        init()
     }
 
     private fun hasPermissions(context: Context, permissions: Array<String>): Boolean =

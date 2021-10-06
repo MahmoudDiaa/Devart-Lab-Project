@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <com.goodiebag.pinview.Pinview
+            android:id="@+id/pin_layout"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:layout_margin="@dimen/_16sdp"
+            app:inputType="number"
+            app:pinLength="4"
+            app:pinHeight="@dimen/_48sdp"
+            app:pinWidth="@dimen/_48sdp"
+            app:cursorVisible="false"
+            app:forceKeyboard="true"
+            app:hint="0"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
